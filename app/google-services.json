@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "75808382990",
+    "project_id": "newstyledecorations-2c24e",
+    "storage_bucket": "newstyledecorations-2c24e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75808382990:android:30ac25ed8728fead6fdc5f",
+        "android_client_info": {
+          "package_name": "com.example.newstyledecorations"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZRwkuWpipxj5RjslZoOLWNvQS3h7ot-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
