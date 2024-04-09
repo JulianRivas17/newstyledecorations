@@ -21,6 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SelectPartyActivity">
+        </activity>
+        <activity android:name=".ChildrenPartyActivity">
+        </activity>
+        <activity android:name=".AdultPartyActivity">
+        </activity>
+
     </application>
 
 </manifest>
