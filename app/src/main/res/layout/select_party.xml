@@ -13,7 +13,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:background="@drawable/bg_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,57 +33,47 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 app:srcCompat="@drawable/profile_ico" />
-
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="180dp" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BIENVENIDO"
-            android:textAlignment="center"
-            android:textColor="#5D5D5D"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="USERNAME027"
-            android:textAlignment="center"
-            android:textColor="#5D5D5D"
-            android:textSize="27sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
-
-        <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="37dp"
-            android:text="NUEVA DECORACIÓN"
+            android:text="TIPO DE FIESTA"
             android:textAlignment="center"
             android:textColor="#5D5D5D"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_child"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:text="EMPEZAR"
+            android:text="INFANTIL"
+            android:background="@drawable/rounded_button_transparent"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#5D5D5D"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:typeface="normal"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/btn_adult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_transparent"
+            android:text="ADULTOS"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#5D5D5D"
+            android:textSize="15sp"
+            android:typeface="normal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
 
     </LinearLayout>
 
