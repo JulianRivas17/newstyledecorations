@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#79E8A9"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="184dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/check_icon" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="¡REGISTRO EXITOSO!"
+            android:textAlignment="center"
+            android:textColor="#5D5D5D"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_white"
+            android:text="IR AL INICIO"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#5D5D5D"
+            android:textSize="14sp"
+            android:typeface="normal" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
