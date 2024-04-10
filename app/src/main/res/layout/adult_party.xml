@@ -54,7 +54,7 @@
                     android:layout_marginBottom="10sp"
                     android:background="@drawable/rounded_title_blue"
                     android:padding="12sp"
-                    android:text="INFANTIL"
+                    android:text="ADULTOS"
                     android:textAlignment="center"
                     android:textColor="#EDEDED"
                     android:textSize="20sp" />
