@@ -115,8 +115,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="DD/MM/AA"
                         android:inputType="date"
-                        android:textColor="#5D5D5D" />
+                        android:textColor="#5D5D5D"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -139,8 +141,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="HH:MM"
                         android:inputType="time"
-                        android:textColor="#5D5D5D" />
+                        android:textColor="#5D5D5D"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -204,8 +208,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="Añadir la Edad"
                         android:inputType="number"
-                        android:textColor="#5D5D5D" />
+                        android:textColor="#5D5D5D"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <TextView
@@ -267,7 +273,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="number"
-                        android:textColor="#5D5D5D" />
+                        android:textColor="#5D5D5D"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -443,7 +450,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="number"
-                        android:textColor="#5D5D5D" />
+                        android:textColor="#5D5D5D"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
