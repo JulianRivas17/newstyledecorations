@@ -7,10 +7,10 @@ public class Eventos {
     private String tipoLuz;
     private String fecha;
     private String hora;
-    private Integer edad;
-    private Integer cantidadAccesorios;
+    private Long edad;
+    private Long cantidadAccesorios;
     private boolean candyBar;
-    private Integer cantidadPuff;
+    private Long cantidadPuff;
     private boolean globos;
     private boolean mesasDecorativas;
     private boolean mesaCilindro;
@@ -29,9 +29,9 @@ public class Eventos {
     public Eventos() {}
 
     public Eventos(String nombre, String motivo, String decoracion, String tipoLuz, String fecha, String hora,
-                        Integer edad, Integer cantidadAccesorios, boolean candyBar, Integer cantidadPuff, boolean globos,
-                            boolean mesasDecorativas, boolean mesaCilindro, boolean mesaComun, boolean luces, boolean puff, boolean fotos,
-                                boolean recepcion, boolean trono, String colores, String direccion, String localidad, boolean casa, boolean salon) {
+                   Long edad, Long cantidadAccesorios, boolean candyBar, Long cantidadPuff, boolean globos,
+                   boolean mesasDecorativas, boolean mesaCilindro, boolean mesaComun, boolean luces, boolean puff, boolean fotos,
+                   boolean recepcion, boolean trono, String colores, String direccion, String localidad, boolean casa, boolean salon) {
         this.nombre = nombre;
         this.motivo = motivo;
         this.decoracion = decoracion;
@@ -106,19 +106,19 @@ public class Eventos {
         this.hora = hora;
     }
 
-    public Integer getEdad() {
+    public Long getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(Long edad) {
         this.edad = edad;
     }
 
-    public Integer getCantidadAccesorios() {
+    public Long getCantidadAccesorios() {
         return cantidadAccesorios;
     }
 
-    public void setCantidadAccesorios(Integer cantidadAccesorios) {
+    public void setCantidadAccesorios(Long cantidadAccesorios) {
         this.cantidadAccesorios = cantidadAccesorios;
     }
 
@@ -130,11 +130,11 @@ public class Eventos {
         this.candyBar = candyBar;
     }
 
-    public Integer getCantidadPuff() {
+    public Long getCantidadPuff() {
         return cantidadPuff;
     }
 
-    public void setCantidadPuff(Integer cantidadPuff) {
+    public void setCantidadPuff(Long cantidadPuff) {
         this.cantidadPuff = cantidadPuff;
     }
 

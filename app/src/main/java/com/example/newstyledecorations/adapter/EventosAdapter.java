@@ -1,6 +1,7 @@
 package com.example.newstyledecorations.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.newstyledecorations.AdultPartyActivity;
+import com.example.newstyledecorations.ChildrenPartyActivity;
 import com.example.newstyledecorations.R;
 import com.example.newstyledecorations.model.Eventos;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -39,6 +42,36 @@ public class EventosAdapter extends FirestoreRecyclerAdapter<Eventos, EventosAda
         viewHolder.fecha.setText(eventos.getFecha());
         viewHolder.hora.setText(eventos.getHora());
 
+        viewHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFirebase.collection("eventos").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            if (documentSnapshot.contains("casa")) {
+                                Intent intent = new Intent(activity, AdultPartyActivity.class);
+                                intent.putExtra("id_eventos", id);
+                                activity.startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(activity, ChildrenPartyActivity.class);
+                                intent.putExtra("id_eventos", id);
+                                activity.startActivity(intent);
+                            }
+                        } else {
+                            Toast.makeText(activity, "No se encontró el evento", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Error al cargar el evento", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
         viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,12 +86,12 @@ public class EventosAdapter extends FirestoreRecyclerAdapter<Eventos, EventosAda
             public void onSuccess(Void unused) {
                 Toast.makeText(activity, "Eliminado correctamenete", Toast.LENGTH_SHORT).show();;
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(activity, "Error al eliminar", Toast.LENGTH_SHORT).show();;
-            }
-        });
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(activity, "Error al eliminar", Toast.LENGTH_SHORT).show();;
+                }
+            });
     }
 
     @NonNull
@@ -70,7 +103,7 @@ public class EventosAdapter extends FirestoreRecyclerAdapter<Eventos, EventosAda
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView motivo, fecha, hora;
-        ImageView btn_delete;
+        ImageView btn_delete, btn_edit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +112,7 @@ public class EventosAdapter extends FirestoreRecyclerAdapter<Eventos, EventosAda
             fecha = itemView.findViewById(R.id.fecha);
             hora = itemView.findViewById(R.id.hora);
             btn_delete = itemView.findViewById(R.id.btn_delete);
+            btn_edit = itemView.findViewById(R.id.btn_edit);
         }
     }
 }

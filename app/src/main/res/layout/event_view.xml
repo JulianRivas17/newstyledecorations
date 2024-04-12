@@ -49,6 +49,13 @@
                 android:layout_height="wrap_content"
                 android:background="#FF0000"
                 app:srcCompat="@drawable/ic_delete" />
+
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icons8_editar" />
         </LinearLayout>
 
     </LinearLayout>
