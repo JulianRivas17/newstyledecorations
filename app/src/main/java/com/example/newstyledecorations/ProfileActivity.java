@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
                         .setQuery(query, Eventos.class)
                         .build();
 
-        mAdapter = new EventosAdapter(firestoreRecyclerOptions);
+        mAdapter = new EventosAdapter(firestoreRecyclerOptions, this);
         mRecycler.setAdapter(mAdapter);
     }
 
