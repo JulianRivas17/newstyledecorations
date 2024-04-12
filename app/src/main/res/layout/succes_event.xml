@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="¡REGISTRO EXITOSO!"
+            android:text="¡EVENTO GUARDADO!"
             android:textAlignment="center"
             android:textColor="#5D5D5D"
             android:textSize="20sp" />
