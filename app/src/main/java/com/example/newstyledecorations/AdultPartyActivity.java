@@ -34,7 +34,6 @@ public class AdultPartyActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.adult_party);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //config bd
         firestore = FirebaseFirestore.getInstance();
 

@@ -64,6 +64,11 @@
                     android:textAlignment="center"
                     android:textColor="#5D5D5D"
                     android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

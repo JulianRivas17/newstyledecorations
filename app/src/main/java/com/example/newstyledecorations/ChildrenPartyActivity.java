@@ -32,7 +32,6 @@ public class ChildrenPartyActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.children_party);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //config bd
         firestore = FirebaseFirestore.getInstance();
 

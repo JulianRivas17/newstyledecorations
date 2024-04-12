@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".AdultPartyActivity">
         </activity>
+        <activity android:name=".ProfileActivity">
+        </activity>
 
     </application>
 
