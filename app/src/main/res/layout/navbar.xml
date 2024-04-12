@@ -25,24 +25,24 @@
             android:typeface="normal" />
 
         <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_title_red"
-            android:text="CERRAR SESIÓN"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#5D5D5D"
-            android:textSize="16sp"
-            android:typeface="normal" />
-
-        <Button
             android:id="@+id/btn_reservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_button"
             android:text="VER MIS RESERVAS"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#5D5D5D"
+            android:textSize="16sp"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_title_red"
+            android:text="CERRAR SESIÓN"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#5D5D5D"
             android:textSize="16sp"
