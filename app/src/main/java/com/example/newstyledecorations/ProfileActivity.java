@@ -1,6 +1,10 @@
 package com.example.newstyledecorations;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     RecyclerView mRecycler;
     EventosAdapter mAdapter;
     FirebaseFirestore miFirestore;
+    Button btn_return;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         miFirestore = FirebaseFirestore.getInstance();
         mRecycler = findViewById(R.id.recyclerView);
+        btn_return = findViewById(R.id.btn_return);
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         Query query = miFirestore.collection("eventos");
 
@@ -33,6 +39,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         mAdapter = new EventosAdapter(firestoreRecyclerOptions, this);
         mRecycler.setAdapter(mAdapter);
+
+        btn_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+            }
+        });
     }
 
     @Override

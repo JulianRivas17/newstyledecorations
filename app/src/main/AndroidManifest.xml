@@ -13,13 +13,15 @@
         android:theme="@style/Theme.Newstyledecorations"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".SelectPartyActivity">
         </activity>
@@ -29,7 +31,11 @@
         </activity>
         <activity android:name=".ProfileActivity">
         </activity>
-        <activity android:name=".EventosAdapter">
+        <activity android:name=".NavarActivity">
+        </activity>
+        <activity android:name=".SuccesEventActivity">
+        </activity>
+        <activity android:name=".SuccesEditActivity">
         </activity>
 
     </application>

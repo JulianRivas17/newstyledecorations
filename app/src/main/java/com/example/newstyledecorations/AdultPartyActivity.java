@@ -27,13 +27,10 @@ import java.util.Map;
 
 public class AdultPartyActivity extends AppCompatActivity {
 
-    Button btn_save;
+    Button btn_save, btn_return;
     EditText input_reason, input_name, input_decoration, input_type_light, input_date, input_time, input_age, cant_acces, input_cant_puff, input_colors, input_direction, input_location;
     Switch swith_candy, switch_ballons, switch_table, switch_lights, switch_puff, switch_photo, switch_recept, switch_trono;
-
     CheckBox check_cylinder, check_table, check_home, check_salon;
-
-    ImageView btn_profile;
     private FirebaseFirestore firestore;
 
     @Override
@@ -81,16 +78,15 @@ public class AdultPartyActivity extends AppCompatActivity {
 
         //Guardar
         btn_save = findViewById(R.id.btn_save);
-        btn_profile = findViewById(R.id.btn_profile);
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdultPartyActivity.this, ProfileActivity.class));
-            }
-        });
+        btn_return = findViewById(R.id.btn_return);
 
         if (id == null || id == "") {
+            btn_return.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(AdultPartyActivity.this, SelectPartyActivity.class));
+                }
+            });
             check_cylinder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -135,8 +131,30 @@ public class AdultPartyActivity extends AppCompatActivity {
                     String tipoLuz = input_type_light.getText().toString().trim();
                     String fecha = input_date.getText().toString().trim();
                     String hora = input_time.getText().toString().trim();
-                    Integer edad = Integer.parseInt(input_age.getText().toString());
-                    Integer cantAccsesorios = Integer.parseInt(cant_acces.getText().toString().trim());
+                    Integer edad = null;
+                    String edadString = input_age.getText().toString().trim();
+                    if (!edadString.isEmpty()) {
+                        edad = Integer.parseInt(edadString);
+                    } else {
+                        edad = 0;
+                    }
+
+                    Integer cantAccsesorios = null;
+                    String cantAccesoriosString = cant_acces.getText().toString().trim();
+                    if (!cantAccesoriosString.isEmpty()) {
+                        cantAccsesorios = Integer.parseInt(cantAccesoriosString);
+                    } else {
+                        cantAccsesorios = 0;
+                    }
+
+                    Integer cantPuff = null;
+                    String cantPuffString = input_cant_puff.getText().toString().trim();
+                    if (!cantPuffString.isEmpty()) {
+                        cantPuff = Integer.parseInt(cantPuffString);
+                    } else {
+                        cantPuff = 0;
+                    }
+
                     String colroes = input_colors.getText().toString().trim();
                     String inputDirection = input_direction.getText().toString().trim();
                     String inputLocation = input_location.getText().toString().trim();
@@ -145,7 +163,6 @@ public class AdultPartyActivity extends AppCompatActivity {
                     if (!swith_candy.isChecked()) {
                         swithCandy = false;
                     }
-                    Integer cantPuff = Integer.parseInt(input_cant_puff.getText().toString().trim());
                     boolean switGlobos = switch_ballons.isChecked();
                     if (!switch_ballons.isChecked()) {
                         switGlobos = false;
@@ -192,7 +209,7 @@ public class AdultPartyActivity extends AppCompatActivity {
                     }
 
 
-                    if (name.isEmpty() && motivo.isEmpty() && decoracion.isEmpty() && tipoLuz.isEmpty()) {
+                    if (name.isEmpty() && motivo.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
                     } else {
                         postEvent(name, motivo, decoracion, tipoLuz, fecha, hora, edad, cantAccsesorios, swithCandy, cantPuff,
@@ -202,6 +219,14 @@ public class AdultPartyActivity extends AppCompatActivity {
                 }
             });
         } else {
+
+            btn_return.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(AdultPartyActivity.this, ProfileActivity.class));
+                }
+            });
+
             getEvent(id);
             String idEvent = id;
 
@@ -240,8 +265,29 @@ public class AdultPartyActivity extends AppCompatActivity {
                     String tipoLuz = input_type_light.getText().toString().trim();
                     String fecha = input_date.getText().toString().trim();
                     String hora = input_time.getText().toString().trim();
-                    Integer edad = Integer.parseInt(input_age.getText().toString());
-                    Integer cantAccsesorios = Integer.parseInt(cant_acces.getText().toString().trim());
+                    Integer edad = null;
+                    String edadString = input_age.getText().toString().trim();
+                    if (!edadString.isEmpty()) {
+                        edad = Integer.parseInt(edadString);
+                    } else {
+                        edad = 0;
+                    }
+
+                    Integer cantAccsesorios = null;
+                    String cantAccesoriosString = cant_acces.getText().toString().trim();
+                    if (!cantAccesoriosString.isEmpty()) {
+                        cantAccsesorios = Integer.parseInt(cantAccesoriosString);
+                    } else {
+                        cantAccsesorios = 0;
+                    }
+
+                    Integer cantPuff = null;
+                    String cantPuffString = input_cant_puff.getText().toString().trim();
+                    if (!cantPuffString.isEmpty()) {
+                        cantPuff = Integer.parseInt(cantPuffString);
+                    } else {
+                        cantPuff = 0;
+                    }
                     String colroes = input_colors.getText().toString().trim();
                     String inputDirection = input_direction.getText().toString().trim();
                     String inputLocation = input_location.getText().toString().trim();
@@ -250,7 +296,6 @@ public class AdultPartyActivity extends AppCompatActivity {
                     if (!swith_candy.isChecked()) {
                         swithCandy = false;
                     }
-                    Integer cantPuff = Integer.parseInt(input_cant_puff.getText().toString().trim());
                     boolean switGlobos = switch_ballons.isChecked();
                     if (!switch_ballons.isChecked()) {
                         switGlobos = false;
@@ -296,7 +341,7 @@ public class AdultPartyActivity extends AppCompatActivity {
                         checkSalon = false;
                     }
 
-                    if (name.isEmpty() && motivo.isEmpty() && decoracion.isEmpty() && tipoLuz.isEmpty()) {
+                    if (name.isEmpty() && motivo.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
                     } else {
                         updateEvent(idEvent, name, motivo, decoracion, tipoLuz, fecha, hora, edad, cantAccsesorios, swithCandy, cantPuff,
@@ -344,7 +389,7 @@ public class AdultPartyActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(getApplicationContext(), "Editado exitosamente", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AdultPartyActivity.this, ProfileActivity.class));
+                startActivity(new Intent(AdultPartyActivity.this, SuccesEditActivity.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -391,7 +436,7 @@ public class AdultPartyActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getApplicationContext(), "Creado exitosamente", Toast.LENGTH_SHORT).show();
-                        finish();
+                        startActivity(new Intent(AdultPartyActivity.this, SuccesEventActivity.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -438,15 +483,20 @@ public class AdultPartyActivity extends AppCompatActivity {
                 input_type_light.setText(tipoLuz);
                 input_date.setText(fecha);
                 input_time.setText(hora);
-                input_age.setText(edad.toString());
                 input_colors.setText(colores);
                 input_direction.setText(direccion);
                 input_location.setText(localidad);
 
                 //input number
-                cant_acces.setText(cantidadAccesorios.toString());
-                input_cant_puff.setText(cantidadPuff.toString());
-
+                if (cantidadAccesorios != null) {
+                    cant_acces.setText(cantidadAccesorios.toString());
+                }
+                if (cantidadPuff != null) {
+                    input_cant_puff.setText(cantidadPuff.toString());
+                }
+                if (edad != null) {
+                    input_age.setText(edad.toString());
+                }
                 //checkboxs
                 check_cylinder.setChecked(mesaCilindro);
                 check_table.setChecked(mesaComun);

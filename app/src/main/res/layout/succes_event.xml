@@ -13,7 +13,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="110dp" />
+            android:layout_height="60dp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -64,16 +64,17 @@
             android:textColor="#5D5D5D"
             android:textSize="14sp"
             android:typeface="normal" />
+
         <Button
             android:id="@+id/btn_return"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:background="@drawable/rounded_button_grey"
             android:text="VOLVER AL INICIO"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#5D5D5D"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
+            android:textSize="14sp"
             android:typeface="normal" />
         <Space
             android:layout_width="match_parent"
