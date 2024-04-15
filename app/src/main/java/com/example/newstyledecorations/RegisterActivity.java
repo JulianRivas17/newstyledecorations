@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText input_user, input_email, editTextTextPassword;
-    Button btn_create_user;
+    Button btn_create_user, btn_login_user;
     FirebaseFirestore firestore;
     FirebaseAuth mAuth;
     @Override
@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         input_email = findViewById(R.id.input_email);
         editTextTextPassword = findViewById(R.id.editTextTextPassword);
         btn_create_user = findViewById(R.id.btn_create_user);
-
+        btn_login_user = findViewById(R.id.btn_login_user);
         btn_create_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +51,14 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     registerUser(nameUser, emailUser, passUser);
                 }
+            }
+        });
+
+        btn_login_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
             }
         });
 

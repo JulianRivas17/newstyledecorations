@@ -35,7 +35,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="USUARIO"
+                android:text="EMAIL"
                 android:textColor="#5D5D5D"
                 android:textSize="14sp" />
 
@@ -44,11 +44,12 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_name_user"
+                    android:id="@+id/input_email_user"
+                    android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/rounded_button_grey"
-                    android:hint="Ingrese su nombre de usuario"
+                    android:hint="Ingrese su email"
                     android:padding="10dp"
                     android:textColor="#5D5D5D"
                     android:textSize="14sp" />
