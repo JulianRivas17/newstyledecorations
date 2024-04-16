@@ -72,35 +72,20 @@
                 android:text="Hora"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/btn_confirm"
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@color/grey"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
-                app:srcCompat="@drawable/whatsapp_ico" />
-
             <ImageButton
                 android:id="@+id/btn_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@color/blue"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
                 app:srcCompat="@drawable/icons8_editar" />
 
             <ImageView
                 android:id="@+id/btn_delete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="26dp"
+                android:layout_height="wrap_content"
                 android:background="#FF0000"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
                 app:srcCompat="@drawable/ic_delete" />
 
         </LinearLayout>
