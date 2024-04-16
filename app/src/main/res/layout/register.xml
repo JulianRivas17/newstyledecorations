@@ -36,25 +36,19 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="NOMBRE DE USUARIO"
                 android:textColor="#5D5D5D"
                 android:textSize="14sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/input_user"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_user"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/rounded_button_grey"
-                    android:hint="Ingrese su nombre de usuario"
-                    android:padding="10dp"
-                    android:textColor="#5D5D5D"
-                    android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_button_grey"
+                android:hint="Ingrese su nombre de usuario"
+                android:padding="10dp"
+                android:textColor="#5D5D5D"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout

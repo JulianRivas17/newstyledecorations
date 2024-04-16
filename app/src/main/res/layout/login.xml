@@ -35,25 +35,21 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="EMAIL"
                 android:textColor="#5D5D5D"
                 android:textSize="14sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/input_email_user"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_email_user"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/rounded_button_grey"
-                    android:hint="Ingrese su email"
-                    android:padding="10dp"
-                    android:textColor="#5D5D5D"
-                    android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_button_grey"
+                android:hint="Ingrese su email"
+                android:padding="10dp"
+                android:textColor="#5D5D5D"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
