@@ -12,12 +12,16 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newstyledecorations.adapter.EventosAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,7 +36,8 @@ public class AdultPartyActivity extends AppCompatActivity {
     Switch swith_candy, switch_ballons, switch_table, switch_lights, switch_puff, switch_photo, switch_recept, switch_trono;
     CheckBox check_cylinder, check_table, check_home, check_salon;
     private FirebaseFirestore firestore;
-
+    FirebaseAuth mAuth;
+    String userId;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -79,8 +84,19 @@ public class AdultPartyActivity extends AppCompatActivity {
         //Guardar
         btn_save = findViewById(R.id.btn_save);
         btn_return = findViewById(R.id.btn_return);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userId =  user.getUid();
+
+        OnBackPressedDispatcher onBackPressedDispatcher = this.getOnBackPressedDispatcher();
 
         if (id == null || id == "") {
+            onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    startActivity(new Intent(AdultPartyActivity.this, SelectPartyActivity.class));
+                }
+            });
             btn_return.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -208,18 +224,22 @@ public class AdultPartyActivity extends AppCompatActivity {
                         checkSalon = false;
                     }
 
-
                     if (name.isEmpty() && motivo.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
                     } else {
                         postEvent(name, motivo, decoracion, tipoLuz, fecha, hora, edad, cantAccsesorios, swithCandy, cantPuff,
                                 switGlobos, switMesas, mesaCilidro, mesaComun, swichtLuces, switchPuff, switchPhoto, switchRecept,
-                                switchTrono, colroes, inputDirection, inputLocation, checkHome, checkSalon = false);
+                                switchTrono, colroes, inputDirection, inputLocation, checkHome, checkSalon);
                     }
                 }
             });
         } else {
-
+            onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    startActivity(new Intent(AdultPartyActivity.this, ProfileActivity.class));
+                }
+            });
             btn_return.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -253,6 +273,14 @@ public class AdultPartyActivity extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         check_salon.setChecked(false);
+                    }
+                }
+            });
+            check_salon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        check_home.setChecked(false);
                     }
                 }
             });
@@ -346,7 +374,7 @@ public class AdultPartyActivity extends AppCompatActivity {
                     } else {
                         updateEvent(idEvent, name, motivo, decoracion, tipoLuz, fecha, hora, edad, cantAccsesorios, swithCandy, cantPuff,
                                 switGlobos, switMesas, mesaCilidro, mesaComun, swichtLuces, switchPuff, switchPhoto, switchRecept,
-                                switchTrono, colroes, inputDirection, inputLocation, checkHome, checkSalon = false);
+                                switchTrono, colroes, inputDirection, inputLocation, checkHome, checkSalon);
                     }
                 }
             });
@@ -360,7 +388,7 @@ public class AdultPartyActivity extends AppCompatActivity {
                              boolean mesaComun, boolean swichtLuces, boolean switchPuff, boolean switchPhoto, boolean switchRecept, boolean switchTrono,
                              String colroes, String inputDirection, String inputLocation, boolean checkHome, boolean checkSalon) {
         Map<String, Object> eventData = new HashMap<>();
-        eventData.put("name", name);
+        eventData.put("nombre", name);
         eventData.put("motivo", motivo);
         eventData.put("decoracion", decoracion);
         eventData.put("tipoLuz", tipoLuz);
@@ -384,6 +412,8 @@ public class AdultPartyActivity extends AppCompatActivity {
         eventData.put("Localidad", inputLocation);
         eventData.put("casa", checkHome);
         eventData.put("salon", checkSalon);
+        eventData.put("userId", userId);
+
 
         firestore.collection("eventos").document(id).update(eventData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -430,6 +460,8 @@ public class AdultPartyActivity extends AppCompatActivity {
         eventData.put("Localidad", inputLocation);
         eventData.put("casa", checkHome);
         eventData.put("salon", checkSalon);
+        eventData.put("userId", userId);
+
 
         firestore.collection("eventos").add(eventData)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -449,6 +481,7 @@ public class AdultPartyActivity extends AppCompatActivity {
     }
 
     private void getEvent(String id) {
+        String idUser = userId;
         firestore.collection("eventos").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

@@ -13,10 +13,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,7 +33,9 @@ public class ChildrenPartyActivity extends AppCompatActivity {
     EditText input_reason, input_name, input_decoration, input_type_light, input_date, input_time, input_age, cant_acces, input_cant_puff;
     Switch swith_candy, switch_ballons, switch_table, switch_lights, switch_puff, switch_photo, switch_recept, switch_trono;
     CheckBox check_cylinder, check_table;
+    String userId;
     private FirebaseFirestore firestore;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -37,7 +43,7 @@ public class ChildrenPartyActivity extends AppCompatActivity {
         String id = getIntent().getStringExtra("id_eventos");
         //config bd
         firestore = FirebaseFirestore.getInstance();
-
+        mAuth = FirebaseAuth.getInstance();
         //inputs
         input_name = findViewById(R.id.input_name);
         input_reason = findViewById(R.id.input_reason);
@@ -69,10 +75,18 @@ public class ChildrenPartyActivity extends AppCompatActivity {
         //Guardar
         btn_save = findViewById(R.id.btn_save);
         btn_return = findViewById(R.id.btn_return);
-
+        FirebaseUser user = mAuth.getCurrentUser();
+        userId =  user.getUid();
+        OnBackPressedDispatcher onBackPressedDispatcher = this.getOnBackPressedDispatcher();
 
 
         if (id == null || id == "") {
+            onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    startActivity(new Intent(ChildrenPartyActivity.this, SelectPartyActivity.class));
+                }
+            });
             btn_return.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -178,6 +192,12 @@ public class ChildrenPartyActivity extends AppCompatActivity {
                 }
             });
         } else {
+            onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    startActivity(new Intent(ChildrenPartyActivity.this, ProfileActivity.class));
+                }
+            });
             btn_return.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -350,7 +370,7 @@ public class ChildrenPartyActivity extends AppCompatActivity {
 
     private void updateEvent(String id,String name, String motivo, String decoracion, String tipoLuz, String fecha, String hora, Integer edad, Integer cantAccsesorios, boolean swithCandy, Integer cantPuff, boolean switGlobos, boolean switMesas, boolean mesaCilidro, boolean mesaComun, boolean swichtLuces, boolean switchPuff, boolean switchPhoto, boolean switchRecept, boolean switchTrono) {
         Map<String, Object> eventData = new HashMap<>();
-        eventData.put("name", name);
+        eventData.put("nombre", name);
         eventData.put("motivo", motivo);
         eventData.put("decoracion", decoracion);
         eventData.put("tipoLuz", tipoLuz);
@@ -369,6 +389,7 @@ public class ChildrenPartyActivity extends AppCompatActivity {
         eventData.put("fotos", switchPhoto);
         eventData.put("recepción", switchRecept);
         eventData.put("trono", switchTrono);
+        eventData.put("userId", userId);
 
         firestore.collection("eventos").document(id).update(eventData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -389,7 +410,7 @@ public class ChildrenPartyActivity extends AppCompatActivity {
                             Integer cantAccsesorios, boolean swithCandy, Integer cantPuff, boolean switGlobos, boolean switMesas, boolean mesaCilidro,
                                 boolean mesaComun, boolean swichtLuces, boolean switchPuff, boolean switchPhoto, boolean switchRecept, boolean switchTrono) {
         Map<String, Object> eventData = new HashMap<>();
-        eventData.put("name", name);
+        eventData.put("nombre", name);
         eventData.put("motivo", motivo);
         eventData.put("decoracion", decoracion);
         eventData.put("tipoLuz", tipoLuz);
@@ -408,6 +429,7 @@ public class ChildrenPartyActivity extends AppCompatActivity {
         eventData.put("fotos", switchPhoto);
         eventData.put("recepción", switchRecept);
         eventData.put("trono", switchTrono);
+        eventData.put("userId", userId);
 
 
         firestore.collection("eventos").add(eventData)

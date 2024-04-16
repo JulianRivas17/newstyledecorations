@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.newstyledecorations.adapter.EventosAdapter;
 import com.example.newstyledecorations.model.Eventos;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -19,7 +21,9 @@ public class ProfileActivity extends AppCompatActivity {
     RecyclerView mRecycler;
     EventosAdapter mAdapter;
     FirebaseFirestore miFirestore;
+    FirebaseAuth mAuth;
     Button btn_return;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +33,11 @@ public class ProfileActivity extends AppCompatActivity {
         miFirestore = FirebaseFirestore.getInstance();
         mRecycler = findViewById(R.id.recyclerView);
         btn_return = findViewById(R.id.btn_return);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userId =  user.getUid();
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
-        Query query = miFirestore.collection("eventos");
+        Query query = miFirestore.collection("eventos").whereEqualTo("userId", userId);
 
         FirestoreRecyclerOptions<Eventos> firestoreRecyclerOptions =
                 new FirestoreRecyclerOptions.Builder<Eventos>()
