@@ -13,7 +13,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="140dp" />
+            android:layout_height="170dp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -32,25 +32,13 @@
             android:textAlignment="center"
             android:textColor="#5D5D5D"
             android:textSize="20sp" />
-        <Button
-            android:id="@+id/btn_confirm_event"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_button_white"
-            android:text="CONFIRMAR AHORA"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#5D5D5D"
-            android:textSize="14sp"
-            android:typeface="normal" />
 
         <Button
             android:id="@+id/id_redirect_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_button_white"
-            android:text="VOLVER AL INICIO"
+            android:text="IR AL INICIO"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#5D5D5D"
             android:textSize="14sp"
